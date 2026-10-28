@@ -65,20 +65,16 @@ button:focus-visible{outline:2px solid var(--paper);outline-offset:2px}
 .date .wd{font-family:var(--f-display);font-weight:800;font-size:clamp(22px,2vw,32px);text-transform:uppercase;letter-spacing:.04em;line-height:1}
 .date .dm{font-weight:600;color:var(--dim);font-size:.85em}
 
-.wx{display:flex;flex-direction:column;gap:.7em}
-.wnow{display:grid;grid-template-columns:auto auto minmax(0,1fr);align-items:center;column-gap:.55em}
-.wnow svg{display:block;width:clamp(30px,2.8vw,40px);height:clamp(30px,2.8vw,40px);color:var(--paper)}
-.wtemp{font-family:var(--f-display);font-weight:800;font-size:clamp(40px,3.6vw,58px);line-height:1;font-variant-numeric:tabular-nums}
-.wtxt{line-height:1.25;min-width:0;padding-left:.55em;border-left:1px solid var(--edge)}
-.wtxt b{display:block;font-weight:700;font-size:.85em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.wtxt span{display:block;color:var(--dim);font-size:.74em;font-variant-numeric:tabular-nums;white-space:nowrap}
-.wdays{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
-.wd1{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 2px;border-radius:10px;background:var(--card2);border:1px solid var(--edge);min-width:0}
-.wd1 .n{font-size:.6em;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);line-height:1}
-.wd1 svg{display:block;width:22px;height:22px;color:var(--paper)}
-.wd1 .t{font-size:.72em;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap;line-height:1}
-.wd1 .t i{font-style:normal;color:var(--dim);font-weight:500}
-.wxempty{color:var(--dim);font-size:.85em}
+.wline{display:flex;align-items:center;gap:.5em;padding-top:.5em;border-top:1px solid var(--edge);min-width:0}
+.wline svg{display:block;width:26px;height:26px;flex:none;color:var(--paper)}
+.wline .wt{font-family:var(--f-display);font-weight:800;font-size:1.7em;line-height:1;font-variant-numeric:tabular-nums}
+.wline .wc{min-width:0;line-height:1.15;font-size:.72em}
+.wline .wc b{display:block;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wline .wc span{color:var(--dim);font-variant-numeric:tabular-nums;white-space:nowrap}
+.wline .wl{margin-left:auto;font-size:.56em;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
+.sound{display:none}
+.sound.on{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(var(--band) + 10px);z-index:5}
+.sound.on{display:inline-flex;align-items:center;gap:.4em;border:1px solid var(--alert);color:#fff;background:rgba(217,38,47,.25);border-radius:999px;padding:.3em .8em;font-size:.6em;font-weight:800;letter-spacing:.06em}
 
 .next{flex:1 1 0;min-height:0;display:flex;flex-direction:column;overflow:hidden}
 .ntime{display:flex;align-items:center;gap:.6em;margin-bottom:.7em}
@@ -178,22 +174,74 @@ button:focus-visible{outline:2px solid var(--paper);outline-offset:2px}
 .strap .cat{font-size:clamp(13px,1.2vw,18px);background:rgba(0,0,0,.25)}
 .strap .src{font-size:clamp(12px,1.05vw,16px);font-weight:600;letter-spacing:.06em;text-transform:none;opacity:.9;margin-left:auto}
 .strap .clk{font-family:var(--f-display);font-size:clamp(22px,2.4vw,38px);letter-spacing:.02em;background:#fff;color:var(--alert);padding:.2em .6em;font-variant-numeric:tabular-nums}
-.stage{position:relative;display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(20px,3vw,52px);min-height:0;align-items:center;
+.stage{position:relative;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(20px,3vw,52px);min-height:0;align-items:center;
   padding:clamp(18px,3vh,40px) max(16px,env(safe-area-inset-right,0px)) clamp(12px,2vh,24px) max(16px,env(safe-area-inset-left,0px))}
-.iconbox{position:relative;aspect-ratio:1;max-height:100%;max-width:100%;justify-self:center;width:100%;display:grid;place-items:center;
-  background:radial-gradient(circle at 50% 45%,#22252d,#121418 70%);border:1px solid var(--edge);border-radius:22px;box-shadow:0 30px 60px -30px #000}
-.iconbox::before,.iconbox::after{content:"";position:absolute;width:22%;height:22%;border:5px solid var(--alert)}
-.iconbox::before{top:-3px;left:-3px;border-right:none;border-bottom:none;border-top-left-radius:22px}
-.iconbox::after{bottom:-3px;right:-3px;border-left:none;border-top:none;border-bottom-right-radius:22px}
-.iconbox .ring{position:absolute;inset:12%;border-radius:50%;border:1px dashed rgba(255,255,255,.12)}
-.iconbox .ring + .ring{inset:24%;border-style:solid;border-color:rgba(217,38,47,.35)}
-.iconbox svg{width:52%;height:52%;color:var(--paper);position:relative}
+.photo{position:relative;height:100%;min-height:0;border-radius:18px;overflow:hidden;background:var(--raise);box-shadow:0 30px 60px -30px #000}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55),transparent 40%);pointer-events:none}
+.photo .cr{position:absolute;left:.8em;bottom:.6em;z-index:2;font-size:clamp(10px,.85vw,13px);color:rgba(255,255,255,.8);max-width:90%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.photo .br{position:absolute;width:20%;height:20%;border:5px solid var(--alert);z-index:2;pointer-events:none}
+.photo .br.a{top:0;left:0;border-right:none;border-bottom:none;border-top-left-radius:18px}
+.photo .br.b{bottom:0;right:0;border-left:none;border-top:none;border-bottom-right-radius:18px}
+
+/* telas intercaladas (agenda, fim de semana, amanhã, feriados) e alertas */
+.scr{position:fixed;inset:0;z-index:21;background:var(--ink);display:grid;grid-template-rows:auto minmax(0,1fr) auto;overflow:hidden}
+.scr[hidden]{display:none!important}
+.scr .sh{display:flex;align-items:stretch;background:var(--paper);color:var(--ink);padding-top:env(safe-area-inset-top,0px);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.scr .sh > *{display:flex;align-items:center;padding:.5em 1em;font-weight:800;text-transform:uppercase;letter-spacing:.12em}
+.scr .sh .tt{font-family:var(--f-display);font-weight:900;font-size:clamp(22px,2.4vw,38px);letter-spacing:.06em;padding-left:0}
+.scr .sh .sub{font-size:clamp(12px,1.1vw,17px);color:#555a63;letter-spacing:.06em;text-transform:none;font-weight:600}
+.scr .sh .ck{margin-left:auto;font-family:var(--f-display);font-size:clamp(22px,2.4vw,38px);background:var(--ink);color:var(--paper);padding:.2em .6em;letter-spacing:.02em;font-variant-numeric:tabular-nums}
+.scr .sc{min-height:0;padding:clamp(18px,3vh,40px) max(16px,env(safe-area-inset-right,0px)) clamp(12px,2vh,24px) max(16px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:clamp(12px,2vh,22px);overflow:hidden}
+.scr .sf{display:flex;align-items:center;gap:1em;padding:0 max(16px,env(safe-area-inset-right,0px)) max(14px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.scr .sf .bar{flex:1;height:4px;background:var(--edge);border-radius:2px;overflow:hidden}
+.scr .sf .bar i{display:block;height:100%;background:var(--paper);transform-origin:left;animation:fill var(--show,30s) linear forwards}
+.scr .sf button{border:1px solid var(--edge);border-radius:999px;padding:.35em 1em;color:var(--dim);font-size:.7em}
+.scr.entering .sc > *{animation:slide .55s cubic-bezier(.2,.8,.2,1) backwards}
+.scr.entering .sc > :nth-child(2){animation-delay:.1s}.scr.entering .sc > :nth-child(3){animation-delay:.2s}.scr.entering .sc > :nth-child(4){animation-delay:.3s}
+.bigrow{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:clamp(14px,2vw,32px);background:var(--card);border:1px solid var(--edge);border-radius:16px;padding:clamp(12px,1.6vh,20px) clamp(16px,2vw,28px)}
+.bigrow .tm{font-family:var(--f-display);font-weight:900;font-size:clamp(40px,4.6vw,78px);line-height:.9;font-variant-numeric:tabular-nums}
+.bigrow .tm small{display:block;font-family:var(--f-body);font-size:.26em;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-top:.35em}
+.bigrow .nm{min-width:0;display:flex;flex-direction:column;gap:.15em}
+.bigrow .nm b{font-weight:900;font-size:clamp(20px,2.3vw,38px);line-height:1.1;text-transform:uppercase;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bigrow .nm span{font-family:var(--f-mono);font-size:clamp(12px,1.1vw,17px);color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bigrow .tg{font-size:clamp(11px,1vw,15px);font-weight:800;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--edge);border-radius:999px;padding:.3em .9em;color:var(--dim);white-space:nowrap}
+.bigrow.lead{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.bigrow.lead .tm small,.bigrow.lead .nm span{color:#555a63}.bigrow.lead .tg{border-color:#bdbab2;color:#555a63}
+.empty2{font-size:clamp(20px,2.2vw,34px);color:var(--dim);margin:auto 0}
+.cols2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(14px,2vw,30px);min-height:0;flex:1}
+.wcard{background:var(--card);border:1px solid var(--edge);border-radius:20px;padding:clamp(16px,2.4vh,32px) clamp(18px,2vw,32px);display:flex;flex-direction:column;gap:.5em;justify-content:center;min-width:0}
+.wcard .dn{font-size:clamp(14px,1.3vw,20px);font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+.wcard .row{display:flex;align-items:center;gap:clamp(12px,1.6vw,26px)}
+.wcard svg{width:clamp(70px,8vw,130px);height:auto;color:var(--paper);flex:none}
+.wcard .tp{font-family:var(--f-display);font-weight:900;font-size:clamp(60px,7.5vw,128px);line-height:.85;font-variant-numeric:tabular-nums}
+.wcard .tp i{font-style:normal;color:var(--dim);font-size:.5em;font-weight:700}
+.wcard .cd{font-size:clamp(18px,1.9vw,30px);font-weight:700}
+.wcard .rn{font-size:clamp(14px,1.3vw,20px);color:var(--dim)}
+.trend{font-size:clamp(18px,2vw,32px);line-height:1.35;color:#cfccc5;border-left:5px solid var(--paper);padding-left:.7em;max-width:52ch}
+.trend b{color:#fff;font-weight:800}
+.hlist{display:flex;flex-direction:column;gap:clamp(8px,1.2vh,14px)}
+.hrow{display:grid;grid-template-columns:minmax(4.2em,auto) minmax(0,1fr) auto;align-items:center;gap:1em;background:var(--card);border:1px solid var(--edge);border-radius:14px;padding:.55em 1.1em}
+.hrow .dd{min-width:2.6em;font-family:var(--f-display);font-weight:900;font-size:clamp(34px,3.6vw,60px);line-height:.9;font-variant-numeric:tabular-nums}
+.hrow .dd small{display:block;font-family:var(--f-body);font-size:.3em;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-top:.3em}
+.hrow b{font-size:clamp(18px,2vw,32px);font-weight:800;line-height:1.15}
+.hrow b span{display:block;font-size:.6em;color:var(--dim);font-weight:600;text-transform:capitalize}
+.hrow .in{font-size:clamp(12px,1.1vw,17px);font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);white-space:nowrap}
+.hrow.first{background:var(--paper);color:var(--ink);border-color:var(--paper)}.hrow.first .dd small,.hrow.first b span,.hrow.first .in{color:#555a63}
+.scr.alarm{background:#120405}
+.scr.alarm .sh{background:var(--alert);color:#fff}.scr.alarm .sh .sub{color:rgba(255,255,255,.85)}.scr.alarm .sh .ck{background:#fff;color:var(--alert)}
+.scr.alarm .sf .bar i{background:var(--alert)}
+.scr.alarm::before{content:"";position:absolute;inset:0;border:10px solid var(--alert);pointer-events:none;animation:pulse 1.1s ease-in-out infinite;z-index:3}
+@keyframes pulse{50%{opacity:.15}}
+.alm{display:flex;align-items:baseline;gap:.4em;flex-wrap:wrap}
+.alm .in{font-family:var(--f-display);font-weight:900;font-size:clamp(70px,10vw,170px);line-height:.85;text-transform:uppercase;color:#fff}
+.alm .at{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,4vw,66px);color:var(--dim)}
 .text{display:flex;flex-direction:column;align-items:flex-start;gap:clamp(12px,2vh,24px);min-width:0}
 .kicker{font-family:var(--f-display);font-weight:900;text-transform:uppercase;letter-spacing:.1em;font-size:clamp(18px,1.8vw,28px);background:var(--alert);color:#fff;padding:.1em .6em}
-.text h1{margin:0;font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(38px,4.8vw,82px);line-height:1.18;text-wrap:balance;
+.text h1{margin:0;font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(34px,4.3vw,74px);line-height:1.18;text-wrap:balance;
   background:var(--paper);color:var(--ink);padding:.12em .3em .08em;box-decoration-break:clone;-webkit-box-decoration-break:clone;display:inline;}
 .hwrap{line-height:1.18}
-.text p{margin:0;font-size:clamp(22px,2.4vw,38px);line-height:1.38;font-weight:500;color:#cfccc5;max-width:32ch;text-wrap:pretty;border-left:5px solid var(--alert);padding-left:.7em}
+.text p{margin:0;font-size:clamp(20px,2.2vw,36px);line-height:1.38;font-weight:500;color:#cfccc5;max-width:34ch;text-wrap:pretty;border-left:5px solid var(--alert);padding-left:.7em}
 .text p b{font-weight:800;color:#fff}
 .sfoot{position:relative;display:flex;align-items:center;gap:1em;padding:0 max(16px,env(safe-area-inset-right,0px)) max(14px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));font-size:.7em;color:var(--dim)}
 .sfoot .bar{flex:1;height:4px;background:var(--edge);border-radius:2px;overflow:hidden}
@@ -202,7 +250,7 @@ button:focus-visible{outline:2px solid var(--paper);outline-offset:2px}
 @keyframes fill{from{transform:scaleX(1)}to{transform:scaleX(0)}}
 .sfoot button{border:1px solid var(--edge);border-radius:999px;padding:.35em 1em;color:var(--dim)}
 .story.entering .strap{animation:drop .5s cubic-bezier(.2,.8,.2,1)}
-.story.entering .iconbox{animation:pop .6s .15s cubic-bezier(.2,.8,.2,1) backwards}
+.story.entering .photo{animation:pop .6s .15s cubic-bezier(.2,.8,.2,1) backwards}
 .story.entering .text > *{animation:slide .55s cubic-bezier(.2,.8,.2,1) backwards}
 .story.entering .text > :nth-child(2){animation-delay:.12s}
 .story.entering .text > :nth-child(3){animation-delay:.24s}
@@ -210,8 +258,8 @@ button:focus-visible{outline:2px solid var(--paper);outline-offset:2px}
 @keyframes pop{from{transform:scale(.85);opacity:0}}
 @keyframes slide{from{transform:translateX(40px);opacity:0}}
 .story.leaving{transition:transform .9s cubic-bezier(.6,0,.4,1),opacity .9s;transform:translateY(calc(100% - var(--band))) scaleY(.06);opacity:0}
-@media (max-width:760px){.stage{grid-template-columns:1fr;grid-template-rows:minmax(0,34%) auto}.iconbox{width:auto;height:100%}.text p{max-width:none}}
-@media (prefers-reduced-motion:reduce){.reel.run,.strap::after,.band .tag i,.strap .live i{animation:none}.story.entering *{animation:none!important}.story.leaving{transition:opacity .3s;transform:none}}
+@media (max-width:760px){.stage{grid-template-columns:1fr;grid-template-rows:minmax(0,34%) auto}.text p{max-width:none}.cols2{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.reel.run,.strap::after,.band .tag i,.strap .live i,.scr.alarm::before{animation:none}.story.entering *{animation:none!important}.story.leaving{transition:opacity .3s;transform:none}}
 </style>
 
 <div class="app">
@@ -220,8 +268,8 @@ button:focus-visible{outline:2px solid var(--paper);outline-offset:2px}
       <section class="card clockcard">
         <div class="clock" id="clock">--:--</div>
         <div class="date"><span class="wd" id="wd">&nbsp;</span><span class="dm" id="dm"></span></div>
+        <div class="wline" id="wline"><span class="wc"><span>Previsão chega na próxima atualização.</span></span></div>
       </section>
-      <section class="card wx" id="wx"><div class="label">Tempo · Recreio</div><div class="wxempty">Previsão chega na próxima atualização.</div></section>
       <section class="card next" id="next">
         <div class="cardhead"><span class="label">Próxima audiência</span></div>
         <div class="empty">Carregando a pauta…</div>
@@ -240,6 +288,7 @@ button:focus-visible{outline:2px solid var(--paper);outline-offset:2px}
     </section>
   </div>
 
+  <button class="sound" id="sound" type="button">Toque aqui para ligar o som dos alertas</button>
   <footer class="band">
     <div class="tag"><i></i>Plantão</div>
     <div class="track" id="track"><span class="bandempty">As notícias aparecem aqui assim que forem publicadas.</span></div>
@@ -249,7 +298,7 @@ button:focus-visible{outline:2px solid var(--paper);outline-offset:2px}
 <section class="story" id="story" hidden aria-live="polite">
   <div class="strap"><span class="live"><i></i>Plantão</span><span class="cat" id="scat"></span><span class="src" id="ssrc"></span><span class="clk" id="sclk"></span></div>
   <div class="stage">
-    <div class="iconbox"><span class="ring"></span><span class="ring"></span><span id="sicon"></span></div>
+    <div class="photo" id="sphoto"><img id="simg" alt=""><span class="br a"></span><span class="br b"></span><span class="cr" id="scred"></span></div>
     <div class="text">
       <span class="kicker" id="skick">Urgente</span>
       <div class="hwrap"><h1 id="sh"></h1></div>
@@ -257,6 +306,12 @@ button:focus-visible{outline:2px solid var(--paper);outline-offset:2px}
     </div>
   </div>
   <div class="sfoot"><div class="bar"><i></i></div><button id="sclose" type="button">Fechar</button></div>
+</section>
+
+<section class="scr" id="scr" hidden aria-live="polite">
+  <div class="sh"><span class="tt" id="xtt"></span><span class="sub" id="xsub"></span><span class="ck" id="xck"></span></div>
+  <div class="sc" id="xsc"></div>
+  <div class="sf"><div class="bar"><i id="xbar"></i></div><button id="xclose" type="button">Fechar</button></div>
 </section>
 
 <script>
@@ -300,6 +355,7 @@ function tick(){
   $("wd").textContent = wdLong(k);
   $("dm").textContent = `${dayMonth(k)} de ${p.year}`;
   $("sclk").textContent = `${p.hour}:${p.minute}`;
+  $("xck").textContent = `${p.hour}:${p.minute}`;
 }
 tick(); setInterval(tick, 1000);
 
@@ -334,15 +390,34 @@ const condPT = c => { const s = String(c||"").toLowerCase();
   if (/thunder|storm/.test(s)) return "Tempestade"; if (/drizzle/.test(s)) return "Garoa"; if (/rain|shower/.test(s)) return "Chuva";
   if (/partly/.test(s)) return "Parcialmente nublado"; if (/overcast/.test(s)) return "Encoberto"; if (/cloud/.test(s)) return "Nublado";
   if (/fog|mist/.test(s)) return "Neblina"; if (/clear|sun/.test(s)) return "Céu limpo"; return c || ""; };
+let wx = null;
 function renderWeather(w){
   if (!w || !w.agora) return;
+  wx = w;
   const today = dayKey(new Date());
-  const days = (w.dias||[]).filter(d => d.data >= today);
-  const t = days[0];
-  $("wx").innerHTML = `<div class="label">Tempo · Recreio</div>
-    <div class="wnow">${wIcon(w.agora.condicao, w.agora.dia !== false)}<div class="wtemp">${Math.round(w.agora.temp)}°</div>
-      <div class="wtxt"><b>${esc(condPT(w.agora.condicao))}</b>${t?`<span>máx ${Math.round(t.max)}° · mín ${Math.round(t.min)}°</span>`:""}</div></div>
-    <div class="wdays">${days.slice(1,5).map(d => `<div class="wd1"><span class="n">${esc(wdShort(d.data))}</span>${wIcon(d.condicao || ((d.chuva??0) >= 60 ? "rain" : (d.chuva??0) >= 30 ? "partly" : "clear"))}<span class="t">${Math.round(d.max)}° <i>${Math.round(d.min)}°</i></span></div>`).join("")}</div>`;
+  const t = (w.dias||[]).find(d => d.data === today);
+  $("wline").innerHTML = `${wIcon(w.agora.condicao, w.agora.dia !== false)}<span class="wt">${Math.round(w.agora.temp)}°</span>
+    <span class="wc"><b>${esc(condPT(w.agora.condicao))}</b>${t?`<span>${Math.round(t.max)}° / ${Math.round(t.min)}°</span>`:""}</span><span class="wl">Recreio</span>`;
+}
+function dayWx(k){ return (wx?.dias||[]).find(d => d.data === k); }
+function dayCond(d){ return d ? (d.condicao || ((d.chuva??0) >= 60 ? "rain" : (d.chuva??0) >= 30 ? "partly" : "clear")) : ""; }
+function trendText(){
+  if (wx?.tendencia) return rich(wx.tendencia);
+  const today = dayKey(new Date());
+  const ds = (wx?.dias||[]).filter(d => d.data >= today);
+  if (ds.length < 3) return "";
+  const rainy = ds.filter(d => (d.chuva??0) >= 60);
+  const hot = ds.reduce((a,d) => d.max > a.max ? d : a, ds[0]);
+  const cold = ds.reduce((a,d) => d.min < a.min ? d : a, ds[0]);
+  const parts = [];
+  if (!rainy.length) parts.push(`Sem previsão de chuva forte nos próximos **${ds.length} dias**.`);
+  else if (rainy.length >= ds.length - 1) parts.push(`Semana chuvosa: chuva em **${rainy.length} dos ${ds.length} dias**.`);
+  else parts.push(`Chuva prevista em **${rainy.map(d => wdShort(d.data)).join(", ")}**.`);
+  parts.push(`Máxima de **${Math.round(hot.max)}°** ${hot.data===today?"hoje":(hot.data===addDays(today,1)?"amanhã":"na "+wdLong(hot.data).replace("-feira",""))} e mínima de **${Math.round(cold.min)}°**.`);
+  const first = ds.slice(0,3).reduce((a,d)=>a+d.max,0)/3, last = ds.slice(-3).reduce((a,d)=>a+d.max,0)/3;
+  if (last - first >= 2) parts.push("Tendência de **calor aumentando** no fim do período.");
+  else if (first - last >= 2) parts.push("Tendência de **temperatura caindo** no fim do período.");
+  return rich(parts.join(" "));
 }
 
 /* ---------- agenda ---------- */
@@ -401,7 +476,7 @@ function render(){
   for (const id of ["dhead","allrow","body"]) $(id).style.setProperty("--cols", colsTpl);
 
   const hearWeek = evs.filter(e => e.isHear && !e.allDay && keys.includes(e.key)).length;
-  $("wktitle").innerHTML = `${esc(fmt(today,{month:"long"}))}<span>${hearWeek} ${hearWeek===1?"audiência":"audiências"} nos próximos ${n} dias</span>`;
+  $("wktitle").innerHTML = `${esc(fmt(today,{month:"long"}))}<span>${hearWeek} ${hearWeek===1?"audiência":"audiências"} · ${n} dias</span>`;
 
   // janela de 8 horas que anda com o dia: começa 1h antes de agora, nunca antes das 8h
   const WIN = 8;
@@ -511,10 +586,11 @@ async function loadData(){
     for (const a of d.agendas || []) eventsByCal.set(a.id, a.eventos || []);
     dataAt = Date.parse(d.atualizadoEm) || Date.now();
     if (d.clima) renderWeather(d.clima);
+    feriadosData = Array.isArray(d.feriados) ? d.feriados : [];
     news = (d.noticias || []).filter(n => n.titulo && n.resumo).sort((a,b) => (b.data||"").localeCompare(a.data||"")).slice(0, 20);
     renderBand();
     if (!lastShow) lastShow = Date.now() - EVERY_MS + 30000;
-    setNotice(""); render(); checkStale();
+    setNotice(""); render(); checkStale(); checkAlarms();
   } catch (e) {
     if (!calendars.length) setNotice("Não consegui carregar a agenda agora. O painel tenta de novo em 1 minuto.");
   }
@@ -523,23 +599,35 @@ function checkStale(){
   const age = Date.now() - dataAt;
   $("status").textContent = dataAt ? (age > 4*3600000 ? "sem atualizar desde " : "atualizado ") + hhmm(new Date(dataAt)) : "";
 }
-/* ---------- ícones das matérias ---------- */
-const ICONS = {
-  martelo: `<rect x="22" y="18" width="40" height="18" rx="4" transform="rotate(-35 42 27)"/><line x1="48" y1="38" x2="76" y2="72"/><rect x="18" y="76" width="44" height="10" rx="3"/><line x1="14" y1="92" x2="66" y2="92"/>`,
-  lei: `<path d="M22 10h40l16 16v64H22z"/><path d="M62 10v16h16"/><text x="50" y="72" text-anchor="middle" font-family="Big Shoulders Display, Impact, sans-serif" font-weight="900" font-size="46" fill="currentColor" stroke="none">§</text>`,
-  celular: `<rect x="28" y="8" width="44" height="84" rx="9"/><line x1="44" y1="16" x2="56" y2="16"/><path d="M60 40v22a10 10 0 0 1-20 0v-4"/><path d="M40 58l-4 5 6 1"/><circle cx="60" cy="36" r="3"/>`,
-  cadeado: `<circle cx="40" cy="34" r="14"/><path d="M14 80a26 26 0 0 1 48-14"/><rect x="58" y="62" width="30" height="26" rx="4"/><path d="M64 62v-7a9 9 0 0 1 18 0v7"/><line x1="73" y1="72" x2="73" y2="78"/>`,
-  perfil: `<circle cx="50" cy="36" r="16"/><path d="M20 86a30 30 0 0 1 60 0"/><circle cx="74" cy="72" r="14"/><line x1="66" y1="64" x2="82" y2="80"/>`,
-  chat: `<path d="M16 22h68v46H46L28 84V68H16z"/><line x1="50" y1="32" x2="50" y2="50"/><circle cx="50" cy="58" r="1.5"/>`,
-  dinheiro: `<rect x="10" y="26" width="80" height="48" rx="6"/><circle cx="50" cy="50" r="12"/><line x1="20" y1="38" x2="20" y2="38"/><line x1="80" y1="62" x2="80" y2="62"/>`,
-  banco: `<path d="M12 36L50 14l38 22z"/><line x1="12" y1="86" x2="88" y2="86"/><line x1="16" y1="78" x2="84" y2="78"/>${[24,40,60,76].map(x=>`<line x1="${x}" y1="44" x2="${x}" y2="72"/>`).join("")}`,
-  alerta: `<path d="M50 12L92 86H8z"/><line x1="50" y1="38" x2="50" y2="62"/><circle cx="50" cy="72" r="1.5"/>`,
-  mascara: `<path d="M14 34c12-6 24-6 36 0 12-6 24-6 36 0 0 18-10 32-24 32-6 0-9-6-12-6s-6 6-12 6C24 66 14 52 14 34z"/><ellipse cx="34" cy="44" rx="7" ry="4"/><ellipse cx="66" cy="44" rx="7" ry="4"/>`
+/* ---------- imagens das matérias (fotos livres do Wikimedia Commons quando a matéria não tem foto própria) ---------- */
+const WM = "https://thumb.wikimedia.org/wikipedia/commons/thumb/";
+const LIB = {
+  martelo:["c/cb/3D_Judges_Gavel.jpg/1280px-3D_Judges_Gavel.jpg","Chris Potter · CC BY 2.0"],
+  martelo2:["2/2f/Wooden_gavel_20170417.jpg/1280px-Wooden_gavel_20170417.jpg","Santeri Viinamäki · CC BY-SA 4.0"],
+  stf:["7/70/Supreme_Federal_Court_of_Brazil.jpg/1280px-Supreme_Federal_Court_of_Brazil.jpg","Rob Sinclair · CC BY-SA 2.0"],
+  stf2:["b/be/Supremo_Tribunal_Federal2.jpg/1280px-Supremo_Tribunal_Federal2.jpg","Everton137 · CC BY-SA 3.0"],
+  congresso:["d/d0/Brazilian_National_Congress.jpg/1280px-Brazilian_National_Congress.jpg","Eurico Zimbres · CC BY-SA 2.5"],
+  planalto:["e/e3/Pal%C3%A1cio_do_Planalto_%288721928846%29.jpg/1280px-Pal%C3%A1cio_do_Planalto_%288721928846%29.jpg","Leandro Neumann Ciuffo · CC BY 2.0"],
+  whatsapp:["5/50/Whatsapp_texting.jpg/1280px-Whatsapp_texting.jpg","Helar Lukats · CC BY-SA 4.0"],
+  apps:["https://upload.wikimedia.org/wikipedia/commons/3/32/Message_apps.jpg","microsiervos · CC BY 2.0"],
+  tiktok:["2/20/TikTok_app.jpg/1280px-TikTok_app.jpg","Solen Feyissa · CC BY-SA 2.0"],
+  facebook:["1/17/Smartphone_running_Facebook_app.jpg/1280px-Smartphone_running_Facebook_app.jpg","Johan Larsson · CC BY 2.0"],
+  instagram:["7/7e/Instagram_app_on_smartphone.jpg/1280px-Instagram_app_on_smartphone.jpg","Santeri Viinamäki · CC BY-SA 4.0"],
+  celular:["https://upload.wikimedia.org/wikipedia/commons/5/57/Smartphone_Use.jpg","Océanos y dados · CC0"],
+  notebook:["c/c1/Person_works_on_laptop_while_holding_smartphone_in_living_room.jpg/1280px-Person_works_on_laptop_while_holding_smartphone_in_living_room.jpg","Shixart1985 · CC BY 2.0"],
+  teclado:["c/c4/Backlit_keyboard.jpg/1280px-Backlit_keyboard.jpg","Colin · CC BY-SA 4.0"],
+  login:["4/47/Username_and_password_20170626.jpg/1280px-Username_and_password_20170626.jpg","Santeri Viinamäki · CC BY-SA 4.0"],
+  token:["e/ef/CryptoCard_two_factor.jpg/1280px-CryptoCard_two_factor.jpg","Brian Ronald · CC BY-SA 4.0"],
+  dinheiro:["d/d0/20_Brazilian_Real_banknote_featuring_a_Golden_Lion_Tamarin_monkey.jpg/1280px-20_Brazilian_Real_banknote_featuring_a_Golden_Lion_Tamarin_monkey.jpg","Oleg Yunakov · CC BY-SA 4.0"],
+  pix:["d/de/Logo_-_pix_powered_by_Banco_Central_%28Brazil%2C_2020%29.png/1280px-Logo_-_pix_powered_by_Banco_Central_%28Brazil%2C_2020%29.png","Banco Central do Brasil · CC BY 3.0"]
 };
-const DEF_ICON = { lei:"lei", conta:"cadeado", golpe:"alerta", justica:"martelo" };
-function icon(item, cls = ""){
-  const k = ICONS[item.icone] ? item.icone : (DEF_ICON[item.categoria] || "martelo");
-  return `<svg class="${cls}" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[k]}</svg>`;
+const libUrl = k => { const x = LIB[k]; if (!x) return null; return x[0].startsWith("http") ? x[0] : WM + x[0]; };
+const DEF_TEMA = { lei:"congresso", conta:"instagram", golpe:"celular", justica:"martelo" };
+const ICON_TEMA = { martelo:"martelo", lei:"congresso", celular:"celular", cadeado:"login", perfil:"instagram", chat:"whatsapp", dinheiro:"dinheiro", banco:"dinheiro", alerta:"celular", mascara:"notebook" };
+function temaOf(it){ return LIB[it.imagemTema] ? it.imagemTema : (ICON_TEMA[it.icone] || DEF_TEMA[it.categoria] || "martelo"); }
+function photoOf(it){
+  const t = temaOf(it);
+  return { src: it.imagem || libUrl(t), alt: libUrl(t), credit: it.imagem ? ("Foto: " + (it.imagemCredito || it.fonte || "reprodução")) : ("Foto ilustrativa: " + LIB[t][1] + " · Wikimedia Commons") };
 }
 
 /* ---------- notícias ---------- */
@@ -549,13 +637,14 @@ function fmtNewsDate(k){ return k ? fmt(k,{day:"numeric",month:"long",year:"nume
 function renderBand(){
   const track = $("track");
   if (!news.length) { track.innerHTML = `<span class="bandempty">As notícias aparecem aqui assim que forem publicadas.</span>`; return; }
-  const items = news.map((it,i) => `<button class="item" type="button" data-i="${i}">${icon(it)}<span class="k">${esc(CAT[it.categoria]||CAT.justica)}</span><span class="h">${esc(it.titulo)}</span></button>`).join("");
+  const items = news.map((it,i) => `<button class="item" type="button" data-i="${i}"><span class="k">${esc(CAT[it.categoria]||CAT.justica)}</span><span class="h">${esc(it.titulo)}</span></button>`).join("");
   const chars = news.reduce((a,it) => a + (it.titulo||"").length + 24, 0);
   track.innerHTML = `<div class="reel run" style="--dur:${Math.max(45, Math.round(chars/6))}s">${items}${items}</div>`;
 }
 $("track").addEventListener("click", e => { const b = e.target.closest(".item"); if (b) showStory(news[+b.dataset.i]); });
 function showStory(item){
   if (!item) return;
+  hideScr(true);
   const st = $("story"); clearTimeout(hideTimer);
   st.style.setProperty("--show", SHOW_MS + "ms");
   $("scat").textContent = CAT[item.categoria] || CAT.justica;
@@ -563,7 +652,9 @@ function showStory(item){
   $("skick").textContent = KICK[item.categoria] || "Urgente";
   $("sh").textContent = item.titulo;
   $("sp").innerHTML = rich(item.resumo);
-  $("sicon").innerHTML = icon(item);
+  const ph = photoOf(item), img = $("simg");
+  img.onerror = () => { if (img.src !== ph.alt) { img.src = ph.alt; $("scred").textContent = "Foto ilustrativa · Wikimedia Commons"; } };
+  img.src = ph.src; $("scred").textContent = ph.credit;
   st.classList.remove("leaving","on","entering"); st.hidden = false; void st.offsetWidth; st.classList.add("on","entering");
   showing = item; lastShow = Date.now();
   const seen = store.get("painel.vistas", []);
@@ -577,15 +668,156 @@ function hideStory(){
 }
 $("sclose").addEventListener("click", e => { e.stopPropagation(); hideStory(); });
 $("story").addEventListener("click", hideStory);
-function nextStory(){
-  // uma notícia a cada 5 minutos; as novas primeiro, depois em rodízio pela lista toda
-  if (!news.length || showing || Date.now() - lastShow < EVERY_MS) return;
+function pickNews(){
   const seen = store.get("painel.vistas", []);
   const fresh = news.find(n => !seen.includes(n.id));
-  if (fresh) return showStory(fresh);
-  rotation = (rotation + 1) % news.length; showStory(news[rotation]);
+  if (fresh) return fresh;
+  rotation = (rotation + 1) % news.length; return news[rotation];
 }
-setInterval(nextStory, 20000);
+
+/* ---------- telas intercaladas ---------- */
+let scrTimer = null, scrKind = null;
+function showScr(kind, title, sub, html, ms){
+  if (!$("story").hidden) { clearTimeout(hideTimer); $("story").hidden = true; showing = null; }
+  const el = $("scr"); clearTimeout(scrTimer);
+  el.className = "scr" + (kind === "alarm" ? " alarm" : "");
+  $("xtt").textContent = title; $("xsub").textContent = sub || "";
+  $("xsc").innerHTML = html;
+  const bar = $("xbar"); bar.style.animation = "none"; void bar.offsetWidth; bar.style.animation = ""; el.style.setProperty("--show", ms + "ms");
+  el.hidden = false; void el.offsetWidth; el.classList.add("entering");
+  scrKind = kind; lastShow = Date.now();
+  scrTimer = setTimeout(() => hideScr(), ms);
+}
+function hideScr(quiet){ clearTimeout(scrTimer); $("scr").hidden = true; scrKind = null; }
+$("xclose").addEventListener("click", e => { e.stopPropagation(); hideScr(); });
+$("scr").addEventListener("click", () => hideScr());
+
+function evRows(list, now, max){
+  const groups = [];
+  for (const e of list) { const g = groups.find(x => x.t === e.start.getTime()); if (g) g.items.push(e); else groups.push({ t: e.start.getTime(), start: e.start, items: [e] }); }
+  return groups.slice(0, max).map((g,i) => {
+    const e0 = g.items[0];
+    const names = g.items.map(e => e.title).join(" · ");
+    const meta = g.items.length > 1 ? `${g.items.length} audiências no mesmo horário` : [e0.proc, e0.tipo].filter(Boolean).join(" · ");
+    const k = dayKey(g.start), today = dayKey(now);
+    const when = k === today ? "hoje" : k === addDays(today,1) ? "amanhã" : wdLong(k).replace("-feira","");
+    const mins = Math.round((g.start - now)/60000);
+    const tag = mins > 0 && mins < 120 ? `em ${mins < 60 ? mins + " min" : Math.floor(mins/60) + "h" + pad(mins%60)}` : (e0.isHear ? "audiência" : "compromisso");
+    return `<div class="bigrow ${i===0?"lead":""}"><div class="tm">${hhmm(g.start)}<small>${esc(when)}</small></div><div class="nm"><b>${esc(names)}</b>${meta?`<span>${esc(meta)}</span>`:""}</div><span class="tg">${esc(tag)}</span></div>`;
+  }).join("");
+}
+function scrAgenda(){
+  const now = new Date(), evs = allEvents().filter(e => !e.allDay && e.end > now);
+  if (!evs.length) return false;
+  const n = new Set(evs.map(e => e.start.getTime())).size;
+  showScr("agenda", "Próximos compromissos", `${n} ${n===1?"horário":"horários"} marcados nos próximos dias`, evRows(evs, now, 5), SHOW_MS);
+  return true;
+}
+function wcard(k, label){
+  const d = dayWx(k);
+  if (!d) return `<div class="wcard"><span class="dn">${esc(label)}</span><span class="rn">Previsão ainda não disponível.</span></div>`;
+  return `<div class="wcard"><span class="dn">${esc(label)}</span><div class="row">${wIcon(dayCond(d))}<span class="tp">${Math.round(d.max)}°<i> / ${Math.round(d.min)}°</i></span></div><span class="cd">${esc(condPT(dayCond(d)))}</span><span class="rn">Chance de chuva: ${d.chuva ?? 0}%</span></div>`;
+}
+function scrWeekend(){
+  if (!wx) return false;
+  const today = dayKey(new Date());
+  let sat = today; for (let i = 0; i < 7; i++) { const k = addDays(today, i); if (utcOf(k).getUTCDay() === 6) { sat = k; break; } }
+  if (utcOf(today).getUTCDay() === 0) sat = addDays(today, -1);
+  const sun = addDays(sat, 1);
+  const lab = k => `${wdLong(k)} · ${+k.slice(8)}/${k.slice(5,7)}`;
+  showScr("fds", "Fim de semana", "Previsão para o Recreio dos Bandeirantes",
+    `<div class="cols2">${wcard(sat, lab(sat))}${wcard(sun, lab(sun))}</div>${trendText()?`<div class="trend">${trendText()}</div>`:""}`, SHOW_MS);
+  return true;
+}
+function scrTomorrow(){
+  const now = new Date(), tk = addDays(dayKey(now), 1);
+  const evs = allEvents().filter(e => !e.allDay && e.key === tk);
+  const hol = holidays().find(h => h.data === tk);
+  const list = evs.length ? evRows(evs, now, 4) : `<div class="empty2">${hol ? "Feriado: " + esc(hol.nome) : "Nenhum compromisso marcado para amanhã."}</div>`;
+  showScr("amanha", "Amanhã", `${wdLong(tk)}, ${dayMonth(tk)}${hol ? " · " + hol.nome : ""}`,
+    `<div class="cols2" style="grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)"><div class="hlist">${list}</div>${wcard(tk, "Tempo amanhã")}</div>`, SHOW_MS);
+  return true;
+}
+let feriadosData = [];
+function holidays(){
+  const today = dayKey(new Date());
+  let list = feriadosData.slice();
+  if (!list.length) for (const [id, evs] of eventsByCal) if (/holiday/.test(id)) for (const e of evs) list.push({ data: e.start?.date, nome: e.summary });
+  return list.filter(h => h.data && h.data >= today && !/Dia do Servidor/i.test(h.nome || "")).sort((a,b) => a.data.localeCompare(b.data));
+}
+function scrHolidays(){
+  const hs = holidays().slice(0, 4);
+  if (!hs.length) return false;
+  const today = dayKey(new Date());
+  const rows = hs.map((h,i) => {
+    const n = Math.round((utcOf(h.data) - utcOf(today))/864e5);
+    const d = dayWx(h.data);
+    const w = d ? ` · ${Math.round(d.max)}° ${condPT(dayCond(d)).toLowerCase()}` : "";
+    return `<div class="hrow ${i===0?"first":""}"><div class="dd">${+h.data.slice(8)}/${h.data.slice(5,7)}<small>${esc(wdShort(h.data))}</small></div><b>${esc(h.nome)}<span>${esc(wdLong(h.data))}${esc(w)}</span></b><span class="in">${n===0?"hoje":n===1?"amanhã":"em "+n+" dias"}</span></div>`;
+  }).join("");
+  showScr("feriados", "Próximos feriados", "Nacionais", `<div class="hlist">${rows}</div>${trendText()?`<div class="trend">${trendText()}</div>`:""}`, SHOW_MS);
+  return true;
+}
+
+// a cada 5 minutos entra uma tela; notícias se alternam com agenda, fim de semana, amanhã e feriados
+const SEQ = ["news","agenda","news","fds","news","amanha","news","feriados"];
+let seqI = 0;
+function nextScreen(){
+  if (showing || scrKind || Date.now() - lastShow < EVERY_MS) return;
+  for (let tries = 0; tries < SEQ.length; tries++) {
+    const k = SEQ[seqI]; seqI = (seqI + 1) % SEQ.length;
+    if (k === "news" && news.length) { showStory(pickNews()); return; }
+    if (k === "agenda" && scrAgenda()) return;
+    if (k === "fds" && scrWeekend()) return;
+    if (k === "amanha" && scrTomorrow()) return;
+    if (k === "feriados" && scrHolidays()) return;
+  }
+}
+setInterval(nextScreen, 15000);
+
+/* ---------- alertas 30 e 15 minutos antes ---------- */
+let actx = null;
+function unlockAudio(){
+  try { if (!actx) actx = new (window.AudioContext || window.webkitAudioContext)(); if (actx.state === "suspended") actx.resume(); } catch {}
+  const ok = actx && actx.state === "running";
+  $("sound").classList.toggle("on", !ok);
+  if (ok) store.set("painel.som", 1);
+}
+document.addEventListener("pointerdown", unlockAudio, { capture: true });
+$("sound").addEventListener("click", e => { e.stopPropagation(); unlockAudio(); beep(1); });
+setTimeout(() => $("sound").classList.toggle("on", !(actx && actx.state === "running")), 1500);
+function beep(n){
+  if (!actx || actx.state !== "running") return;
+  const t0 = actx.currentTime + .05;
+  for (let i = 0; i < n; i++) for (const [f, dt] of [[880, 0], [1320, .16]]) {
+    const o = actx.createOscillator(), g = actx.createGain(), t = t0 + i * .7 + dt;
+    o.type = "sine"; o.frequency.value = f;
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.35, t + .02); g.gain.exponentialRampToValueAtTime(.001, t + .14);
+    o.connect(g).connect(actx.destination); o.start(t); o.stop(t + .16);
+  }
+}
+function checkAlarms(){
+  const now = new Date(), today = dayKey(now);
+  const fired = store.get("painel.alertas", {});
+  if (fired.dia !== today) { fired.dia = today; fired.k = []; }
+  const evs = allEvents().filter(e => !e.allDay && e.start > now);
+  for (const lead of [15, 30]) {
+    const due = evs.filter(e => { const m = (e.start - now)/60000; return m <= lead && m > lead - 5; });
+    if (!due.length) continue;
+    const t = due[0].start.getTime(), key = t + "|" + lead;
+    if (fired.k.includes(key)) continue;
+    const group = due.filter(e => e.start.getTime() === t);
+    fired.k.push(key); store.set("painel.alertas", fired);
+    const mins = Math.max(1, Math.round((t - now)/60000));
+    const html = `<div class="alm"><span class="in">Em ${mins} min</span><span class="at">às ${hhmm(group[0].start)}</span></div>${group.map(e => evRows([e], now, 1)).join("")}`;
+    showScr("alarm", group.some(e => e.isHear) ? (group.length > 1 ? `${group.length} audiências` : "Audiência") : "Compromisso", `Alerta de ${lead} minutos`, html, 60000);
+    beep(lead === 15 ? 5 : 3);
+    return;
+  }
+}
+setInterval(checkAlarms, 20000);
+window.__painel = { scrAgenda, scrWeekend, scrTomorrow, scrHolidays, checkAlarms };
+
 /* ---------- ciclo ---------- */
 addEventListener("resize", () => render());
 setInterval(() => render(), 30000);

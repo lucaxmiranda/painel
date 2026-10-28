@@ -1,5 +1,5 @@
 {
- "atualizadoEm": "2026-10-28T12:40:00Z",
+ "atualizadoEm": "2026-10-28T13:30:00Z",
  "agendas": [
   {
    "id": "gonzalezmiranda.adv@gmail.com",
@@ -170,7 +170,10 @@
    "resumo": "A **Polícia Civil do DF** deflagrou a **Operação Cáritas** contra grupo que criava falsas campanhas de caridade com vídeos falsos de famosos, como **Gusttavo Lima**. Cinco foram presos; o grupo teria movimentado cerca de **R$ 10 milhões**.",
    "titulo": "PCDF prende grupo que usava deepfake de famosos em falsas doações",
    "url": "https://metropoles.com/distrito-federal/na-mira/pcdf-prende-grupo-que-usava-deepfake-de-gusttavo-lima-em-golpe-milionario",
-   "id": "2026-10-28-pcdf-deepfake-doacoes"
+   "id": "2026-10-28-pcdf-deepfake-doacoes",
+   "imagemTema": "notebook",
+   "imagem": "https://images.metroimg.com/2026/10/operacao-caritas.jpeg",
+   "imagemCredito": "Metrópoles"
   },
   {
    "categoria": "golpe",
@@ -181,7 +184,8 @@
    "resumo": "A **Polícia Civil de Botucatu** fez buscas na zona leste de São Paulo, em imóvel usado para aplicar golpes financeiros pelo país. Foram apreendidos cerca de **15 celulares**, notebook e **maquininha de cartão**. Um casal foi levado à delegacia.",
    "titulo": "Polícia de Botucatu fecha central de golpes na capital paulista",
    "url": "https://sampi.net.br/bauru/noticias/3014652/regional/2026/10/policia-civil-de-botucatu-desarticula-central-de-golpe-na-capital",
-   "id": "2026-10-27-botucatu-central-golpes"
+   "id": "2026-10-27-botucatu-central-golpes",
+   "imagemTema": "celular"
   },
   {
    "categoria": "golpe",
@@ -192,7 +196,8 @@
    "resumo": "Em **Feira de Santana (BA)**, um suspeito chamava candidatos por aplicativo de mensagem e fazia **reconhecimento facial** como etapa da vaga. Os dados teriam sido usados em empréstimos e no financiamento de uma picape de **R$ 200 mil**.",
    "titulo": "Falsa entrevista de emprego colhia biometria para fraudes",
    "url": "https://falagenefax.com/2026/10/27/golpe-falsa-entrevista-emprego-feira-de-santana/",
-   "id": "2026-10-27-golpe-falsa-entrevista-feira"
+   "id": "2026-10-27-golpe-falsa-entrevista-feira",
+   "imagemTema": "notebook"
   },
   {
    "categoria": "golpe",
@@ -203,7 +208,8 @@
    "resumo": "A **Polícia Civil do RJ** fez buscas em **Irajá e Campo Grande** contra suspeitos que montavam falsos pontos bancários. Eles pegavam o celular de idosos para fazer **empréstimos e Pix** sem autorização.",
    "titulo": "Polícia do Rio mira grupo que usava marca de banco contra idosos",
    "url": "https://www.piranot.com.br/2026/10/27/noticias/seguranca-sociedade-bem-estar/policia/golpe-falso-banco-idosos-policia/",
-   "id": "2026-10-27-pcrj-falso-banco-idosos"
+   "id": "2026-10-27-pcrj-falso-banco-idosos",
+   "imagemTema": "dinheiro"
   },
   {
    "categoria": "lei",
@@ -214,7 +220,8 @@
    "resumo": "O ministro **Luiz Fux** convocou audiência pública para **3 de novembro** sobre a **MP 1.394/2026**, que proíbe apostas de quota fixa e encerra as autorizações do setor. O tema é discutido na **ADI 8027**, movida por associação de loterias.",
    "titulo": "STF fará audiência pública sobre a MP que proíbe as bets",
    "url": "https://noticias.stf.jus.br/postsnoticias/stf-realizara-audiencia-publica-sobre-mp-que-trata-de-apostas-esportivas/",
-   "id": "2026-10-27-stf-audiencia-mp-bets"
+   "id": "2026-10-27-stf-audiencia-mp-bets",
+   "imagemTema": "stf"
   },
   {
    "categoria": "lei",
@@ -225,7 +232,8 @@
    "resumo": "Em repercussão geral (**Tema 1.486**), o **STF** decidiu que municípios não podem impor a fisioterapeutas e terapeutas ocupacionais jornada acima das **30 horas semanais** da Lei 8.856/1994. O relator foi **Edson Fachin**.",
    "titulo": "STF fixa teto de 30 horas para fisioterapeutas",
    "url": "https://amazonas1.com.br/stf-confirma-jornada-maxima-de-30-horas-para-fisioterapeutas/",
-   "id": "2026-10-27-stf-fisioterapeutas-30h"
+   "id": "2026-10-27-stf-fisioterapeutas-30h",
+   "imagemTema": "stf2"
   },
   {
    "categoria": "golpe",
@@ -236,7 +244,8 @@
    "resumo": "O **TJMS** alerta que criminosos se passam por **juízes e desembargadores** por telefone ou WhatsApp e pedem transferências para liberar valores de processos. Não pague nada: confirme no **cartório da vara** ou com seu advogado.",
    "titulo": "TJMS alerta para golpe de falsos juízes no WhatsApp",
    "url": "https://www.agazetadedourados.com.br/noticias/policia/tj-ms-divulga-alerta-de-golpe-envolvendo-falsos-magistrados/27/10/2026/",
-   "id": "2026-10-27-tjms-falsos-magistrados"
+   "id": "2026-10-27-tjms-falsos-magistrados",
+   "imagemTema": "whatsapp"
   },
   {
    "categoria": "golpe",
@@ -247,7 +256,8 @@
    "resumo": "Golpistas fazem o celular da vítima exibir o **número verdadeiro do advogado** e usam dados reais do processo para cobrar taxas por **Pix**. A orientação é desligar e ligar pelo canal de sempre. A **OAB-SP** já contou mais de 4 mil queixas.",
    "titulo": "Falso advogado agora liga com o número real do escritório",
    "url": "https://www.guairanews.com/2026/10/26/golpe-falso-advogado-numero-falso/",
-   "id": "2026-10-26-falso-advogado-numero-clonado"
+   "id": "2026-10-26-falso-advogado-numero-clonado",
+   "imagemTema": "celular"
   },
   {
    "categoria": "golpe",
@@ -258,7 +268,8 @@
    "resumo": "A **OAB-ES** já soma mais de **1.300 denúncias** do golpe do falso advogado e moveu **ação civil pública** contra a Meta e operadoras de telefonia. A entidade também pede ao CNJ **autenticação em dois fatores** no PJe.",
    "titulo": "OAB-ES processa Meta e operadoras por golpe do falso advogado",
    "url": "https://www.migalhas.com.br/quentes/467171/oab-es-alerta-sobre-golpe-do-falso-advogado-e-orienta-populacao",
-   "id": "2026-10-26-oab-es-falso-advogado"
+   "id": "2026-10-26-oab-es-falso-advogado",
+   "imagemTema": "apps"
   },
   {
    "categoria": "golpe",
@@ -269,7 +280,8 @@
    "resumo": "Desde **26/10**, os bancos trocam mais dados para seguir valores desviados no Pix, etapa do **MED 2.0** do Banco Central. A vítima tem até **80 dias** para pedir a devolução pelo app do banco.",
    "titulo": "Pix passa a rastrear dinheiro de golpe entre contas",
    "url": "https://dol.com.br/noticias/brasil/966619/nova-regra-do-pix-contra-fraudes-entra-em-vigor-a-partir-de-hoje-2610",
-   "id": "2026-10-26-pix-med-rastreamento"
+   "id": "2026-10-26-pix-med-rastreamento",
+   "imagemTema": "pix"
   },
   {
    "categoria": "golpe",
@@ -280,7 +292,8 @@
    "resumo": "O **Procon de Apucarana** alerta para mensagens de WhatsApp em nome da **TIM** dizendo que o CPF foi bloqueado. O link leva a um **boleto falso** ou pede dados pessoais. Ignore e bloqueie o contato.",
    "titulo": "Golpe usa nome da TIM e falso bloqueio de CPF",
    "url": "https://novaeranews.com.br/procon-de-apucarana-alerta-sobre-novo-golpe-envolvendo-a-tim/",
-   "id": "2026-10-26-procon-golpe-cpf-bloqueado"
+   "id": "2026-10-26-procon-golpe-cpf-bloqueado",
+   "imagemTema": "whatsapp"
   },
   {
    "categoria": "lei",
@@ -291,7 +304,8 @@
    "resumo": "O **STF** definiu que entes que ainda não pagam o piso a professores temporários devem aplicá-lo a partir de **1º de janeiro de 2027**, sem efeito retroativo. Ações em curso até 16/4/2026 ficam preservadas (**Tema 1.308**).",
    "titulo": "Piso do magistério para temporários vale a partir de 2027",
    "url": "https://noticias.stf.jus.br/postsnoticias/stf-define-prazo-para-aplicacao-do-piso-nacional-do-magisterio-a-professores-temporarios/",
-   "id": "2026-10-26-stf-piso-professores-temporarios"
+   "id": "2026-10-26-stf-piso-professores-temporarios",
+   "imagemTema": "stf"
   },
   {
    "categoria": "conta",
@@ -302,7 +316,8 @@
    "resumo": "A **21ª Vara Cível de São Paulo** deu **5 dias** para a Meta reativar Instagram, Facebook e Threads do advogado **Ariel de Castro Alves**. A juíza viu arbitrariedade: a conta caiu sem aviso e sem indicar qual post violou as regras.",
    "titulo": "Juíza manda Meta devolver redes de advogado em 5 dias",
    "url": "https://abcreporter.com.br/2026/10/26/juiza-cita-arbitrariedade-e-censura-e-meta-e-condenada-a-restabelecer-as-redes-sociais-de-advogado/",
-   "id": "2026-10-26-tjsp-meta-redes-advogado"
+   "id": "2026-10-26-tjsp-meta-redes-advogado",
+   "imagemTema": "facebook"
   },
   {
    "categoria": "lei",
@@ -313,7 +328,8 @@
    "resumo": "A **3ª Turma do STJ** decidiu que o Reclame Aqui não responde automaticamente por avaliações negativas. Com base no **art. 19 do Marco Civil**, exigir checagem prévia seria censura; a plataforma só responde por **falha própria**.",
    "titulo": "STJ: Reclame Aqui não responde por toda queixa publicada",
    "url": "https://www.stj.jus.br/sites/portalp/Paginas/Comunicacao/Noticias/2026/23102026-Site-Reclame-Aqui-nao-pode-ser-automaticamente-responsabilizado-por-avaliacoes-negativas-de-consumidores-.aspx",
-   "id": "2026-10-23-stj-reclame-aqui"
+   "id": "2026-10-23-stj-reclame-aqui",
+   "imagemTema": "martelo2"
   },
   {
    "categoria": "conta",
@@ -324,7 +340,8 @@
    "resumo": "O **3º Juizado Especial Cível de Campina Grande** deu **5 dias úteis** para a Meta devolver o Instagram do portal Paraíba Mix, suspenso em agosto sem explicação individual. Se atrasar, a multa diária é de **R$ 300**, até R$ 5 mil.",
    "titulo": "Meta tem 5 dias para devolver Instagram de portal da Paraíba",
    "url": "https://www.paraibamix.com.br/justica-determina-que-meta-reative-instagram-do-portal-paraiba-mix-sob-pena-de-multa-advogado-destaca-decisao/",
-   "id": "2026-10-22-jec-campina-paraiba-mix"
+   "id": "2026-10-22-jec-campina-paraiba-mix",
+   "imagemTema": "instagram"
   },
   {
    "categoria": "conta",
@@ -335,7 +352,8 @@
    "resumo": "O **TJMG** condenou o **TikTok** a indenizar em **R$ 10 mil** e devolver a conta de uma usuária de Brasópolis. Golpistas usaram o perfil por quase oito meses, e a plataforma ignorou o aviso feito no dia seguinte.",
    "titulo": "TikTok pagará R$ 10 mil por perfil hackeado por 8 meses",
    "url": "https://www.em.com.br/gerais/2026/10/7525961-tiktok-e-condenado-a-pagar-rs-10-mil-a-mineira-que-teve-conta-hackeada.html",
-   "id": "2026-10-22-tjmg-tiktok-conta-hackeada"
+   "id": "2026-10-22-tjmg-tiktok-conta-hackeada",
+   "imagemTema": "tiktok"
   },
   {
    "categoria": "lei",
@@ -346,7 +364,8 @@
    "resumo": "A **Lei Complementar 238** sobe o limite do MEI para **R$ 110 mil em 2027** e R$ 140 mil em 2028, e permite dois empregados. Débitos com a União até 13/10/2026 serão perdoados, se o MEI ficar em dia por seis meses.",
    "titulo": "Nova lei eleva teto do MEI e perdoa dívidas",
    "url": "https://mercadoeconsumo.com.br/21/10/2026/economia/lula-sanciona-lei-complementar-dos-meis-com-perdao-de-dividas/",
-   "id": "2026-10-21-lc-238-mei"
+   "id": "2026-10-21-lc-238-mei",
+   "imagemTema": "planalto"
   },
   {
    "categoria": "lei",
@@ -357,7 +376,8 @@
    "resumo": "Por **6 a 5**, com voto de desempate de **Luiz Fux**, o STF fixou que o ISS não entra na base do PIS e da Cofins (**Tema 118**). A tese vale para casos semelhantes; a modulação só pode vir em embargos.",
    "titulo": "STF tira o ISS da base de cálculo do PIS e da Cofins",
    "url": "https://noticias.stf.jus.br/postsnoticias/stf-decide-que-iss-nao-integra-base-de-calculo-do-pis-e-da-cofins/",
-   "id": "2026-10-21-stf-iss-fora-pis-cofins"
+   "id": "2026-10-21-stf-iss-fora-pis-cofins",
+   "imagemTema": "stf2"
   },
   {
    "categoria": "conta",
@@ -368,7 +388,8 @@
    "resumo": "O **Juizado de Timon (TJMA)** mandou a Meta restaurar por completo o Instagram de um influenciador desativado sem aviso, com fotos e seguidores. O prazo é de **5 dias úteis**, com multa de **R$ 500 por dia**. O pedido de dano moral foi negado.",
    "titulo": "Juiz de Timon manda Meta restaurar Instagram de influenciador",
    "url": "https://www.portalr10.com/blogs-e-colunas/182379/juiz-determina-que-facebook-reative-conta-de-influenciador-de-timon-desativada-sem-aviso-previo/",
-   "id": "2026-10-21-tjma-timon-instagram"
+   "id": "2026-10-21-tjma-timon-instagram",
+   "imagemTema": "instagram"
   },
   {
    "categoria": "conta",
@@ -379,7 +400,42 @@
    "resumo": "O **TJGO** manteve condenação da **Meta** a pagar **R$ 25 mil** a uma clínica de Goiânia que teve o WhatsApp Business banido sem explicação. A multa por demora em reativar pode chegar a **R$ 300 mil**.",
    "titulo": "Meta indenizará clínica por banir WhatsApp sem aviso",
    "url": "https://www.rotajuridica.com.br/?p=179675",
-   "id": "2026-10-20-tjgo-meta-whatsapp-clinica"
+   "id": "2026-10-20-tjgo-meta-whatsapp-clinica",
+   "imagemTema": "whatsapp"
+  }
+ ],
+ "feriados": [
+  {
+   "data": "2026-11-02",
+   "nome": "Finados"
+  },
+  {
+   "data": "2026-11-15",
+   "nome": "Proclamação da República"
+  },
+  {
+   "data": "2026-11-20",
+   "nome": "Dia da Consciência Negra"
+  },
+  {
+   "data": "2026-12-25",
+   "nome": "Natal"
+  },
+  {
+   "data": "2027-01-01",
+   "nome": "Ano Novo"
+  },
+  {
+   "data": "2027-01-20",
+   "nome": "Dia de São Sebastião (Rio de Janeiro)"
+  },
+  {
+   "data": "2027-02-08",
+   "nome": "Carnaval (segunda-feira)"
+  },
+  {
+   "data": "2027-02-09",
+   "nome": "Carnaval (terça-feira)"
   }
  ]
 }
