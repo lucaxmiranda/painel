@@ -320,8 +320,8 @@ const SERVER = "Google Calendar";
 const TZ = "America/Sao_Paulo";
 const CNJ = /\d{7}-\d{2}\.\d{4}\.\d\.\d{2}\.\d{4}/;
 const SHOW_MS = 35000, EVERY_MS = 5*60000;
-const CAT = { lei:"Nova lei", conta:"Contas e redes", golpe:"Golpe digital", justica:"Justiça" };
-const KICK = { lei:"Nova lei", conta:"Decisão", golpe:"Alerta", justica:"Urgente" };
+const CAT = { lei:"Leis e tribunais", conta:"Contas e redes", digital:"Mundo digital", golpe:"Golpe digital", justica:"Justiça" };
+const KICK = { lei:"Direito", conta:"Decisão", digital:"Tecnologia", golpe:"Alerta", justica:"Urgente" };
 
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -622,7 +622,7 @@ const LIB = {
   pix:["d/de/Logo_-_pix_powered_by_Banco_Central_%28Brazil%2C_2020%29.png/1280px-Logo_-_pix_powered_by_Banco_Central_%28Brazil%2C_2020%29.png","Banco Central do Brasil · CC BY 3.0"]
 };
 const libUrl = k => { const x = LIB[k]; if (!x) return null; return x[0].startsWith("http") ? x[0] : WM + x[0]; };
-const DEF_TEMA = { lei:"congresso", conta:"instagram", golpe:"celular", justica:"martelo" };
+const DEF_TEMA = { lei:"congresso", conta:"instagram", digital:"apps", golpe:"celular", justica:"martelo" };
 const ICON_TEMA = { martelo:"martelo", lei:"congresso", celular:"celular", cadeado:"login", perfil:"instagram", chat:"whatsapp", dinheiro:"dinheiro", banco:"dinheiro", alerta:"celular", mascara:"notebook" };
 function temaOf(it){ return LIB[it.imagemTema] ? it.imagemTema : (ICON_TEMA[it.icone] || DEF_TEMA[it.categoria] || "martelo"); }
 function photoOf(it){
