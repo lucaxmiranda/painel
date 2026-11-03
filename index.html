@@ -396,7 +396,7 @@ const TZ = "America/Sao_Paulo";
 const CNJ = /\d{7}-\d{2}\.\d{4}\.\d\.\d{2}\.\d{4}/;
 // telas cheias: uma a cada 3 minutos (contados do fim da tela anterior)
 const SHOW_MS = 35000, EVERY_MS = 3*60000;
-const P1_MS = 30000, P2_MS = 60000, DICA_MS = 60000, DICA_MAX = 2;
+const P1_MS = 30000, P2_MS = 60000, DICA_MS = 60000, DICA_MAX = 2, NEWS_MAX = 2;
 const CAT = { lei:"Leis e tribunais", conta:"Contas e redes", digital:"Mundo digital", golpe:"Golpe digital", justica:"Justiça" };
 const KICK = { lei:"Direito", conta:"Decisão", digital:"Tecnologia", golpe:"Alerta", justica:"Urgente" };
 
@@ -651,23 +651,34 @@ function setNotice(html){
   $("notice").innerHTML = html ? `<div class="card"><p>${html}</p></div>` : "";
 }
 /* ---------- dados publicados junto com a página (atualizados pela tarefa agendada) ---------- */
-let lastStamp = null;
+let lastStamp = null, banco = { noticias: [], dicas: [] }, bancoAt = 0;
+/* bancos separados: a tarefa agendada regrava dados.json sem apagar o acervo */
+async function loadBanco(){
+  if (Date.now() - bancoAt < 3600000) return;
+  bancoAt = Date.now();
+  const get = async f => { try { const r = await fetch(f + "?t=" + Date.now(), { cache: "no-store" }); return r.ok ? await r.json() : null; } catch { return null; } };
+  const [n, t] = await Promise.all([get("banco-noticias.json"), get("banco-dicas.json")]);
+  banco = { noticias: n?.noticias || banco.noticias, dicas: t?.dicas || banco.dicas, stamp: (n?.atualizadoEm || "") + (t?.atualizadoEm || "") };
+}
+const semRepetir = list => { const ids = new Set(); return list.filter(x => x.id && !ids.has(x.id) && ids.add(x.id)); };
 async function loadData(){
   try {
     const r = await fetch("dados.json?t=" + Date.now(), { cache: "no-store" });
     if (!r.ok) throw new Error(r.status);
     const d = await r.json();
-    if (d.atualizadoEm === lastStamp) { checkStale(); return; }
-    lastStamp = d.atualizadoEm;
+    await loadBanco();
+    const stamp = d.atualizadoEm + (banco.stamp || "");
+    if (stamp === lastStamp) { checkStale(); return; }
+    lastStamp = stamp;
     calendars = (d.agendas || []).map(a => ({ id: a.id }));
     eventsByCal.clear();
     for (const a of d.agendas || []) eventsByCal.set(a.id, a.eventos || []);
     dataAt = Date.parse(d.atualizadoEm) || Date.now();
     if (d.clima) renderWeather(d.clima);
     feriadosData = Array.isArray(d.feriados) ? d.feriados : [];
-    news = (d.noticias || []).filter(n => n.titulo && n.resumo).sort((a,b) => (b.data||"").localeCompare(a.data||"")).slice(0, 20);
+    news = semRepetir([...(d.noticias || []), ...banco.noticias]).filter(n => n.titulo && n.resumo).sort((a,b) => (b.data||"").localeCompare(a.data||""));
     renderBand();
-    dicas = (d.dicas || []).filter(x => x.id && x.titulo && x.texto && x.comentario);
+    dicas = semRepetir([...(d.dicas || []), ...banco.dicas]).filter(x => x.id && x.titulo && x.texto && x.comentario);
     if (!lastShow) lastShow = Date.now() - EVERY_MS + 30000;
     setNotice(""); render(); checkStale(); checkAlarms();
   } catch (e) {
@@ -714,11 +725,18 @@ function photoOf(it){
 let news = [], rotation = 0, showing = null, hideTimer = null, lastShow = 0;
 const rich = s => esc(s).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
 function fmtNewsDate(k){ return k ? fmt(k,{day:"numeric",month:"long",year:"numeric"}) : ""; }
+/* quantas vezes cada notícia já passou neste aparelho; o que já tinha passado antes conta como esgotado */
+function newsVistas(){
+  let v = store.get("painel.noticiasVistas", null);
+  if (!v) { v = {}; for (const id of store.get("painel.vistas", [])) v[id] = NEWS_MAX; store.set("painel.noticiasVistas", v); }
+  return v;
+}
 function renderBand(){
   const track = $("track");
   if (!news.length) { track.innerHTML = `<span class="bandempty">As notícias aparecem aqui assim que forem publicadas.</span>`; return; }
-  const items = news.map((it,i) => `<button class="item" type="button" data-i="${i}"><span class="k ${esc(it.categoria||"")}">${esc(CAT[it.categoria]||CAT.justica)}</span><span class="h">${esc(it.titulo)}</span></button>`).join("");
-  const chars = news.reduce((a,it) => a + (it.titulo||"").length + 24, 0);
+  const vistas = newsVistas(), faixa = news.map((it,i) => [it,i]).filter(([it]) => (vistas[it.id] || 0) < NEWS_MAX).slice(0, 20);
+  const items = faixa.map(([it,i]) => `<button class="item" type="button" data-i="${i}"><span class="k ${esc(it.categoria||"")}">${esc(CAT[it.categoria]||CAT.justica)}</span><span class="h">${esc(it.titulo)}</span></button>`).join("");
+  const chars = faixa.reduce((a,[it]) => a + (it.titulo||"").length + 24, 0);
   track.innerHTML = `<div class="reel run" style="--dur:${Math.max(45, Math.round(chars/6))}s">${items}${items}</div>`;
 }
 $("track").addEventListener("click", e => { const b = e.target.closest(".item"); if (b) showStory(news[+b.dataset.i]); });
@@ -762,8 +780,10 @@ function showStory(item){
   st.classList.remove("leaving","on","entering"); st.hidden = false; void st.offsetWidth; st.classList.add("on","entering");
   showing = item; lastShow = Date.now();
   storyPage(1, item);
-  const seen = store.get("painel.vistas", []);
-  if (!seen.includes(item.id)) store.set("painel.vistas", [...seen, item.id].slice(-200));
+  const vistas = newsVistas();
+  vistas[item.id] = (vistas[item.id] || 0) + 1;
+  store.set("painel.noticiasVistas", vistas);
+  if (vistas[item.id] >= NEWS_MAX) renderBand();
   if (item.texto) {
     storyTimers.push(setTimeout(() => storyPage(2, item), P1_MS));
     storyTimers.push(setTimeout(hideStory, P1_MS + P2_MS));
@@ -810,7 +830,7 @@ function showDica(d){
   el.hidden = false; el.classList.remove("leaving","entering"); void el.offsetWidth; el.classList.add("entering");
   fitText($("dfit"), 18, 40);
   runBar("dbar", DICA_MS);
-  $("dlbl").textContent = "Texto oficial da lei · comentário com base no STJ e STF";
+  $("dlbl").textContent = /STJ|STF|Súmula|REsp|Tema/.test(d.base || "") ? "Texto oficial da lei · comentário com base no STJ e STF" : "Texto oficial da lei · comentário de apoio";
   const vistas = store.get("painel.dicasVistas", {});
   vistas[d.id] = (vistas[d.id] || 0) + 1;
   const keep = new Set(dicas.map(x => x.id));
@@ -832,10 +852,10 @@ $("dica").addEventListener("click", () => hideDica());
 $("sclose").addEventListener("click", e => { e.stopPropagation(); hideStory(); });
 $("story").addEventListener("click", hideStory);
 function pickNews(){
-  const seen = store.get("painel.vistas", []);
-  const fresh = news.find(n => !seen.includes(n.id));
-  if (fresh) return fresh;
-  rotation = (rotation + 1) % news.length; return news[rotation];
+  const vistas = newsVistas();
+  const pool = news.filter(n => (vistas[n.id] || 0) < NEWS_MAX);
+  if (!pool.length) return null;
+  return pool.reduce((a,b) => (vistas[b.id] || 0) < (vistas[a.id] || 0) ? b : a);
 }
 
 /* ---------- telas intercaladas ---------- */
@@ -929,7 +949,7 @@ function nextScreen(){
   if (showing || scrKind || dicaOn || Date.now() - lastShow < EVERY_MS) return;
   for (let tries = 0; tries < SEQ.length; tries++) {
     const k = SEQ[seqI]; seqI = (seqI + 1) % SEQ.length;
-    if (k === "news" && news.length) { showStory(pickNews()); return; }
+    if (k === "news") { const n = pickNews(); if (n) { showStory(n); return; } }
     if (k === "dica" && showDica(pickDica())) return;
     if (k === "agenda" && scrAgenda()) return;
     if (k === "fds" && scrWeekend()) return;
